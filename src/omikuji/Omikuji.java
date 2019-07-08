@@ -12,11 +12,9 @@ abstract class Omikuji implements Fortune {
 	protected String gakumon;
 
 	public abstract void setUnsei();
-
 	public String getUnsei() {
 		return unsei;
 	}
-
 	public void setUnsei(String unsei) {
 		this.unsei = unsei;
 	}
@@ -24,7 +22,6 @@ abstract class Omikuji implements Fortune {
 	public String getNegaigoto() {
 		return negaigoto;
 	}
-
 	public void setNegaigoto(String negaigoto) {
 		this.negaigoto = negaigoto;
 	}
@@ -32,7 +29,6 @@ abstract class Omikuji implements Fortune {
 	public String getAkinai() {
 		return akinai;
 	}
-
 	public void setAkinai(String akinai) {
 		this.akinai = akinai;
 	}
@@ -40,7 +36,6 @@ abstract class Omikuji implements Fortune {
 	public String getGakumon() {
 		return gakumon;
 	}
-
 	public void setGakumon(String gakumon) {
 		this.gakumon = gakumon;
 	}

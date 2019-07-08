@@ -6,7 +6,7 @@ package omikuji;
  *
  */
 public class Suekichi extends Omikuji {
-
+	//unseiに末吉をセットする
 	@Override
 	public void setUnsei() {
 		unsei = "末吉";

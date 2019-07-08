@@ -16,6 +16,7 @@ public interface Fortune {
 	* @param resourceName
 	* @return
 	*/
+	//文字コードの設定
 	static Properties loadUtf8Properties(String resourceName) {
 		Properties result = new Properties();
 
@@ -34,7 +35,7 @@ public interface Fortune {
 		return result;
 
 	}
-
+	//プロパティファイルからの読み込み
 	Properties prop = loadUtf8Properties("/fortune.properties");
 
 	String DISP_STR = prop.getProperty("disp_str");

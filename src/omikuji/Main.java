@@ -16,8 +16,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -57,8 +55,7 @@ public class Main {
 		}
 		//今日の日付の取得
 		LocalDate today = LocalDate.now();
-		//運勢を格納するリストを用意
-		List<Omikuji> unseis = new ArrayList<Omikuji>();
+
 		try {
 			if (rebase.equals("1")) {
 
@@ -76,7 +73,8 @@ public class Main {
 
 					//DB(omikuji)へ書き込み
 					String sqlin = "INSERT INTO omikuji VALUES(?,?,?,?,?,?,?,?,?)";
-					PreparedStatement preparedStatement;
+					PreparedStatement preparedStatement=conn.prepareStatement(sqlin);
+
 					try {
 						preparedStatement = conn.prepareStatement(sqlin);
 						preparedStatement.setInt(1, Integer.parseInt(columns[0]));
@@ -89,59 +87,10 @@ public class Main {
 						preparedStatement.setDate(8, java.sql.Date.valueOf(today));
 						preparedStatement.setString(9, "aoki");
 
+						preparedStatement.executeQuery();
+
 					} catch (SQLException e1) {
 						e1.printStackTrace();
-					}
-					//columnsに運勢の項目をset
-					switch (columns[0]) {
-					case "大吉":
-						Daikichi daikichi = new Daikichi();
-						daikichi.setUnsei(columns[0]);
-						daikichi.setNegaigoto(columns[1]);
-						daikichi.setAkinai(columns[2]);
-						daikichi.setGakumon(columns[3]);
-						unseis.add(daikichi);
-						break;
-					case "中吉":
-						Chukichi chukichi = new Chukichi();
-						chukichi.setUnsei(columns[0]);
-						chukichi.setNegaigoto(columns[1]);
-						chukichi.setAkinai(columns[2]);
-						chukichi.setGakumon(columns[3]);
-						unseis.add(chukichi);
-						break;
-					case "小吉":
-						Syokichi syokichi = new Syokichi();
-						syokichi.setUnsei(columns[0]);
-						syokichi.setNegaigoto(columns[1]);
-						syokichi.setAkinai(columns[2]);
-						syokichi.setGakumon(columns[3]);
-						unseis.add(syokichi);
-						break;
-					case "末吉":
-						Suekichi suekichi = new Suekichi();
-						suekichi.setUnsei(columns[0]);
-						suekichi.setNegaigoto(columns[1]);
-						suekichi.setAkinai(columns[2]);
-						suekichi.setGakumon(columns[3]);
-						unseis.add(suekichi);
-						break;
-					case "吉":
-						Kichi kichi = new Kichi();
-						kichi.setUnsei(columns[0]);
-						kichi.setNegaigoto(columns[1]);
-						kichi.setAkinai(columns[2]);
-						kichi.setGakumon(columns[3]);
-						unseis.add(kichi);
-						break;
-					case "凶":
-						Kyou kyou = new Kyou();
-						kyou.setUnsei(columns[0]);
-						kyou.setNegaigoto(columns[1]);
-						kyou.setAkinai(columns[2]);
-						kyou.setGakumon(columns[3]);
-						unseis.add(kyou);
-						break;
 					}
 
 					buffer.close();
@@ -209,27 +158,21 @@ public class Main {
 				switch (rSet4.getString(1)) {
 				case "大吉":
 					omikuji = new Daikichi();
-
 					break;
 				case "中吉":
 					omikuji = new Chukichi();
-
 					break;
 				case "小吉":
 					omikuji = new Syokichi();
-
 					break;
 				case "末吉":
 					omikuji = new Suekichi();
-
 					break;
 				case "吉":
 					omikuji = new Kichi();
-
 					break;
 				case "凶":
 					omikuji = new Kyou();
-
 					break;
 				}
 				omikuji.setUnsei(rSet4.getString(1));
@@ -244,7 +187,7 @@ public class Main {
 				//DBへ結果の書き込み
 				String sqlin2 = "INSERT INTO result VALUES(?,?,?,?,?,?,?)";
 				PreparedStatement pstinsertresult = conn.prepareStatement(sqlin2);
-				//ResultSet res = pstinsertresult.executeQuery();
+
 				try {
 					pstinsertresult = conn.prepareStatement(sqlin2);
 					pstinsertresult.setDate(1, java.sql.Date.valueOf(today));
@@ -255,8 +198,13 @@ public class Main {
 					pstinsertresult.setDate(6, java.sql.Date.valueOf(today));
 					pstinsertresult.setInt(7, omikujicd);
 
+					pstinsertresult.executeUpdate();
+
+
 				} catch (SQLException e1) {
 					e1.printStackTrace();
+
+
 				}
 			}
 		} catch (FileNotFoundException fne) {

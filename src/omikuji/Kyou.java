@@ -6,7 +6,7 @@ package omikuji;
  *
  */
 public class Kyou extends Omikuji  {
-
+	//unseiに凶をセットする
 	@Override
 	public void setUnsei() {
 		unsei = "凶";
