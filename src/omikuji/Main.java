@@ -73,7 +73,7 @@ public class Main {
 
 					//DB(omikuji)へ書き込み
 					String sqlin = "INSERT INTO omikuji VALUES(?,?,?,?,?,?,?,?,?)";
-					PreparedStatement preparedStatement=conn.prepareStatement(sqlin);
+					PreparedStatement preparedStatement = conn.prepareStatement(sqlin);
 
 					try {
 						preparedStatement = conn.prepareStatement(sqlin);
@@ -87,7 +87,7 @@ public class Main {
 						preparedStatement.setDate(8, java.sql.Date.valueOf(today));
 						preparedStatement.setString(9, "aoki");
 
-						preparedStatement.executeQuery();
+						preparedStatement.executeUpdate();
 
 					} catch (SQLException e1) {
 						e1.printStackTrace();
@@ -200,10 +200,8 @@ public class Main {
 
 					pstinsertresult.executeUpdate();
 
-
 				} catch (SQLException e1) {
 					e1.printStackTrace();
-
 
 				}
 			}
