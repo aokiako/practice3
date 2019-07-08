@@ -11,32 +11,55 @@ abstract class Omikuji implements Fortune {
 	protected String akinai;
 	protected String gakumon;
 
-	//運勢を取得
+
 	public abstract void setUnsei();
+	/**運勢を取得
+	 * @return
+	 */
 	public String getUnsei() {
 		return unsei;
-	}//運勢を設定
+	}
+	/**運勢を設定
+	 * @param unsei
+	 */
 	public void setUnsei(String unsei) {
 		this.unsei = unsei;
 	}
-	//願い事を取得
+
+	/**願い事を取得
+	 * @return
+	 */
 	public String getNegaigoto() {
 		return negaigoto;
-	}//願い事を設定
+	}
+	/**願い事を設定
+	 * @param negaigoto
+	 */
+
 	public void setNegaigoto(String negaigoto) {
 		this.negaigoto = negaigoto;
 	}
-	//商いを取得
-	public String getAkinai() {
+
+	/**商いを取得
+	 * @return
+	 */	public String getAkinai() {
 		return akinai;
-	}//商いを設定
+	}
+	 /**商いを設定
+		 * @param akinai
+		 */
 	public void setAkinai(String akinai) {
 		this.akinai = akinai;
 	}
-	//学問を取得
-	public String getGakumon() {
+
+	/**学問を取得
+	 * @return
+	 */	public String getGakumon() {
 		return gakumon;
-	}//学問を設定
+	}
+	 /**学問を設定
+		 * @param gakumon
+		 */
 	public void setGakumon(String gakumon) {
 		this.gakumon = gakumon;
 	}
