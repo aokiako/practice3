@@ -28,10 +28,11 @@ import java.util.regex.Pattern;
 public class Main {
 
 	/**
-	 * @param args
-	 * @throws SQLException
-	 * @throws ParseException
-	 * @throws IOException
+	 * おみくじ実行mainメソッド
+	 * 
+	 * @param args [0]:
+	 * @throws SQLException SQL例外
+	 * @throws ParseException 解析例外
 	 */
 	public static void main(String[] args) throws SQLException, ParseException {
 		//DB(omikuji)に再度データを登録しない
@@ -175,7 +176,7 @@ public class Main {
 					omikuji = new Kyou();
 					break;
 				}
-				omikuji.setUnsei(rSet4.getString(1));
+				omikuji.setUnsei();
 				omikuji.setNegaigoto(rSet4.getString(2));
 				omikuji.setAkinai(rSet4.getString(3));
 				omikuji.setGakumon(rSet4.getString(4));

@@ -13,8 +13,8 @@ import java.util.Properties;
 public interface Fortune {
 
 	/**
-	* @param resourceName
-	* @return
+	* @param resourceName 文字コード設定
+	* @return エンコーディングした結果
 	*/
 	//文字コードの設定
 	static Properties loadUtf8Properties(String resourceName) {
